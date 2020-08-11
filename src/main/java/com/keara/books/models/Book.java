@@ -19,15 +19,27 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Size(min = 5, max = 200)
+    	private Long id;
+    
+    @Size(min=3, message="Title must be 3 characters or longer")
+    @Size(max=200, message="Title must be 200 characters or shorter")
     private String title;
-    @Size(min = 5, max = 200)
+
+    
+    @Size(min=3, message="Description must be 3 characters or longer")
+    @Size(max=200, message="Description must be 200 characters or shorter")
     private String description;
-    @Size(min = 3, max = 40)
+
+    
+    @Size(min=3, message="Language must be 3 characters or longer")
+    @Size(max=200, message="Language must be 200 characters or shorter")
     private String language;
-    @Min(100)
+
+    
+
+    @Min(value=0, message="Number of pages must be greater than 0")
     private Integer numberOfPages;
+    
     // This will not allow the createdAt column to be updated after creation
     @Column(updatable=false)
     @DateTimeFormat(pattern="yyyy-MM-dd")
@@ -85,6 +97,10 @@ public class Book {
         this.language = lang;
         this.numberOfPages = pages;
     }
+	
+	public String toSTring() {
+		return title + ", " + description + ", " + language + ", " + numberOfPages;
+	}
     
     @PrePersist
     protected void onCreate(){

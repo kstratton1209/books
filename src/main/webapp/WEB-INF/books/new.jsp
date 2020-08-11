@@ -4,33 +4,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title>Add book</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.5.0/css/bootstrap.min.css" />
+    <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </head>
+
+<style>
+
+    .wrapper{
+      width:700px;
+      margin-left: 20px;
+      padding: 20px;
+      justify-content: space-between;
+    }
+
+</style>
 <body>
+<div class="wrapper">
 <h1>New Book</h1>
-<form:form action="/books" method="post" modelAttribute="book">
-    <p>
-        <form:label path="title">Title</form:label>
-        <form:errors path="title"/>
-        <form:input path="title"/>
-    </p>
-    <p>
-        <form:label path="description">Description</form:label>
-        <form:errors path="description"/>
-        <form:textarea path="description"/>
-    </p>
-    <p>
-        <form:label path="language">Language</form:label>
-        <form:errors path="language"/>
-        <form:input path="language"/>
-    </p>
-    <p>
-        <form:label path="numberOfPages">Pages</form:label>
-        <form:errors path="numberOfPages"/>     
-        <form:input type="number" path="numberOfPages"/>
-    </p>    
-    <input type="submit" value="Submit"/>
+<form:form action="/create" method="post" modelAttribute="book">
+   
+	    <label>Title	<input type="text" name="title"></label>
+	    <p></p>
+		<div class="form-group">
+		    <label for="exampleFormControlTextarea1">Description</label>
+		    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name = "description"></textarea>
+		  </div>
+		<p></p>
+		<label>Language		<input type="text" name="language"></label>
+		<p></p>
+		<label>Number of pages	<input type="number" name="numberOfPages"></label>
+		<p></p>
+ 		<button class="btn btn-primary">Add new book</button>
+    
 </form:form> 
+</div>
 </body>
 </html>
